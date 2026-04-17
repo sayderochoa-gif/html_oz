@@ -1,0 +1,59 @@
+/* Contenedor principal */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Tarjeta */
+.movie-card {
+  background: #222;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  /* Flexbox ayuda a que el botón siempre quede abajo si las tarjetas varían de alto */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ajuste de imágenes: Todas iguales sin deformarse */
+.movie-card img {
+  width: 100%;
+  height: 350px;     /* Altura fija para uniformidad */
+  object-fit: cover; /* Evita que la imagen se vea estirada */
+}
+
+.movie-info {
+  padding: 15px;
+  flex-grow: 1;      /* Hace que el área de texto ocupe el espacio disponible */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Lógica de ver más/menos */
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+/* Estado expandido */
+.movie-card.expanded .description {
+  display: block;    /* Cambiamos de -webkit-box a block para mostrar todo */
+}
+
+.toggle-btn {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: auto;  /* Empuja el botón al final de la tarjeta siempre */
+  align-self: flex-start; /* Evita que el botón se estire a lo ancho */
+}
